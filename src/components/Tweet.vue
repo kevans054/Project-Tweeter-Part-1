@@ -4,20 +4,23 @@
         <div>
             <h3>{{ tweetObject.username }}</h3>
             <h6>{{ tweetObject.userId }}</h6>
-            <p>{{ tweetObject.content }}</p>
+            <p>{{ content }}</p>
             <h5>{{ tweetObject.createdAt }}</h5>
-            <tweet-delete v-if="isOwned" :tweetId="tweetObject.tweetId"></tweet-delete>
+            <tweet-delete v-if="isOwned" :tweetId="tweetObject.tweetId"></tweet-delete><br>
+            <tweet-edit @update-tweet="updateTweet" v-if="isOwned" :tweetId="tweetObject.tweetId"></tweet-edit>
         </div>
     </div>
 </template>
 
 <script>
-import TweetDelete from'./TweetDelete.vue'
+import TweetDelete from './TweetDelete.vue'
+import TweetEdit from './TweetEdit.vue'
 import cookies from 'vue-cookies'
     export default {
         name: "page-tweet",
         components: {
-            TweetDelete
+            TweetDelete,
+            TweetEdit
         },
         props: {
             tweetObject: {
@@ -27,7 +30,13 @@ import cookies from 'vue-cookies'
         },
         data() {
             return {
-                isOwned: cookies.get('userId') == this.tweetObject.userId
+                isOwned: cookies.get('userId') == this.tweetObject.userId,
+                content: this.tweetObject.content
+            }
+        },
+        methods: {
+            updateTweet(newContent) {
+                this.content = newContent;
             }
         },
     }
