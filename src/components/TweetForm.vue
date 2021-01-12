@@ -1,7 +1,7 @@
 <template>
-    <div>
+    <div class="post-tweet">
         <h4>{{ tweetStatus }}</h4>
-        <textarea v-model="tweetContent"></textarea>
+        <textarea v-model="tweetContent"></textarea><br>
         <button @click="postTweet()">Post</button>
     </div>
 </template>
@@ -43,6 +43,8 @@ import cookies from 'vue-cookies'
     }
 </script>
 
-<style lang="sass" scoped>
-
+<style scoped>
+    .post-tweet{
+        margin: 10px;
+    }
 </style>
