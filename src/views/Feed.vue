@@ -4,7 +4,7 @@
         <img src="../assets/twitterlogo.png" alt="Twitter logo">
     </div>
         <h1>My Tweeter Feed</h1>
-        
+        <!-- <h6>{{ tweetObject.userId }}</h6> -->
         <button @click="getTweets">Refresh Tweets</button>
         <div class="feed-container" v-for="tweet in tweets" :key = "tweet.tweetId">
             <tweet-card :tweetObject="tweet"></tweet-card>

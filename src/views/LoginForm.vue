@@ -54,6 +54,7 @@
                 }).then((response) => {
                     this.loginStatus = "Success"
                     cookies.set('session', response.data.loginToken)
+                    cookies.set('userId', response.data.userId)
                     this.$router.push("/feed")
                 }).catch((error) => {
                     console.log(error)
