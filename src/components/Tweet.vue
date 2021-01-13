@@ -1,13 +1,15 @@
 <template>
-    <div class="tweet-container">
+    <div class="container-fluid">
         <h3>This is a tweet</h3>
         <div>
             <h3>{{ tweetObject.username }}</h3>
             <h6>{{ tweetObject.userId }}</h6>
             <p>{{ content }}</p>
+            <!-- <p>{{ comment }}</p> -->
             <h5>{{ tweetObject.createdAt }}</h5>
             <tweet-delete v-if="isOwned" :tweetId="tweetObject.tweetId"></tweet-delete><br>
-            <tweet-edit @update-tweet="updateTweet" v-if="isOwned" :tweetId="tweetObject.tweetId"></tweet-edit>
+            <tweet-edit @update-tweet="updateTweet" v-if="isOwned" :tweetId="tweetObject.tweetId"></tweet-edit><br>
+            <comment-form v-if="isOwned" :tweetId="tweetObject.tweetId"></comment-form>
         </div>
     </div>
 </template>
@@ -15,12 +17,14 @@
 <script>
 import TweetDelete from './TweetDelete.vue'
 import TweetEdit from './TweetEdit.vue'
+import CommentForm from './TweetComment.vue'
 import cookies from 'vue-cookies'
     export default {
         name: "page-tweet",
         components: {
             TweetDelete,
-            TweetEdit
+            TweetEdit,
+            CommentForm
         },
         props: {
             tweetObject: {
@@ -31,20 +35,27 @@ import cookies from 'vue-cookies'
         data() {
             return {
                 isOwned: cookies.get('userId') == this.tweetObject.userId,
-                content: this.tweetObject.content
+                content: this.tweetObject.content,
+                // comment: CommentForm.comment
             }
         },
         methods: {
             updateTweet(newContent) {
                 this.content = newContent;
-            }
+            },
+
+            // updateComment(newComment) {
+            //     this.comment = newComment;
+            // }
         },
     }
 </script>
 
 <style scoped>
-    .tweet-container {
+    .container-fluid {
         display: grid;
+        border: 10px;
+        color: blue;
         margin: 10px;
     }
 </style>

@@ -3,11 +3,14 @@
         <div id="login-logo">
         <img src="../assets/twitterlogo.png" alt="Twitter logo">
     </div>
-        <h1>My Tweeter Feed</h1>
-        <!-- <h6>{{ tweetObject.userId }}</h6> -->
+        <h6>My Tweeter Feed</h6>
         <button @click="getTweets">Refresh Tweets</button>
         <div class="feed-container" v-for="tweet in tweets" :key = "tweet.tweetId">
             <tweet-card :tweetObject="tweet"></tweet-card>
+           
+        </div>
+        <div>
+            
         </div>
         <div>
             <h1>Post a tweet</h1>
@@ -20,6 +23,7 @@
 import axios from "axios"
 import TweetForm from "../components/TweetForm.vue"
 import TweetCard from "../components/Tweet.vue"
+// import TweetComment from "../components/TweetComment.vue"
 
     export default {
         name: "feed-page",
@@ -30,7 +34,8 @@ import TweetCard from "../components/Tweet.vue"
         },
         components: {
             TweetForm,
-            TweetCard
+            TweetCard,
+            // TweetComment
         },
         mounted: function() {
             this.getTweets();
