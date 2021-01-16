@@ -4,6 +4,7 @@
         <div>
             <h3>{{ tweetObject.username }}</h3>
             <h6>{{ tweetObject.userId }}</h6>
+            <p>{{ tweetObject.tweetId}}
             <p>{{ content }}</p>
             <h5>{{ tweetObject.createdAt }}</h5>
             <tweet-delete v-if="isOwned" :tweetId="tweetObject.tweetId"></tweet-delete><br>
@@ -52,7 +53,10 @@ import cookies from 'vue-cookies'
 
             addComment(newComment) {
                 this.comment = newComment;
-            }
+            },
+            // showComments(tweetId) {
+
+            // }
         },
     }
 </script>
