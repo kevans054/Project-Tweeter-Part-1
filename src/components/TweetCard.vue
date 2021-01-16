@@ -5,11 +5,11 @@
             <h3>{{ tweetObject.username }}</h3>
             <h6>{{ tweetObject.userId }}</h6>
             <p>{{ content }}</p>
-            <!-- <p>{{ comment }}</p> -->
             <h5>{{ tweetObject.createdAt }}</h5>
             <tweet-delete v-if="isOwned" :tweetId="tweetObject.tweetId"></tweet-delete><br>
             <tweet-edit @update-tweet="updateTweet" v-if="isOwned" :tweetId="tweetObject.tweetId"></tweet-edit><br>
-            <comment-form v-if="isOwned" :tweetId="tweetObject.tweetId"></comment-form>
+            <view-comments :tweetId="tweetObject.tweetId"></view-comments>
+            <add-comments @add-comment="addComment" :tweetid="tweetObject.tweetId"></add-comments>
         </div>
     </div>
 </template>
@@ -17,26 +17,32 @@
 <script>
 import TweetDelete from './TweetDelete.vue'
 import TweetEdit from './TweetEdit.vue'
-import CommentForm from './TweetComment.vue'
+import AddComments from './AddComments.vue'
+import ViewComments from './ViewComments.vue'
 import cookies from 'vue-cookies'
     export default {
-        name: "page-tweet",
+        name: "tweet-card",
         components: {
             TweetDelete,
             TweetEdit,
-            CommentForm
+            AddComments,
+            ViewComments
         },
         props: {
             tweetObject: {
                 type: Object,
-                required: true 
+                required: true,
+                },
+                // comments: {
+                // type: Object,
+                // required: true
+                // }
             },
-        },
         data() {
             return {
                 isOwned: cookies.get('userId') == this.tweetObject.userId,
                 content: this.tweetObject.content,
-                // comment: CommentForm.comment
+            
             }
         },
         methods: {
@@ -44,9 +50,9 @@ import cookies from 'vue-cookies'
                 this.content = newContent;
             },
 
-            // updateComment(newComment) {
-            //     this.comment = newComment;
-            // }
+            addComment(newComment) {
+                this.comment = newComment;
+            }
         },
     }
 </script>

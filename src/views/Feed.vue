@@ -22,7 +22,7 @@
 <script>
 import axios from "axios"
 import TweetForm from "../components/TweetForm.vue"
-import TweetCard from "../components/Tweet.vue"
+import TweetCard from "../components/TweetCard.vue"
 // import TweetComment from "../components/TweetComment.vue"
 
     export default {
@@ -35,7 +35,7 @@ import TweetCard from "../components/Tweet.vue"
         components: {
             TweetForm,
             TweetCard,
-            // TweetComment
+           
         },
         mounted: function() {
             this.getTweets();
