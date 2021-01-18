@@ -10,7 +10,7 @@
         <p>Username:
         <input type="text" id="usernamefield" v-model="username"></p>
         <p>Password:
-        <input type="password" id="passwordfield" v-model="password" > </p>
+        <input type="password" id="passwordfield" v-model="userpassword" > </p>
         <p>Bio:
         <input type="text" id="biofield" v-model="bio"></p>
         <p>birthdate:
@@ -37,12 +37,15 @@
                 password: "",
                 bio: "",
                 birthdate: "",
-                loginToken: ""
+                loginToken: "",
+                userpassword: ""
+
                 
             }
         },
         methods: {
             signupUser: function() {
+                
                 axios.request({
                     method: "POST",
                     url: "https://tweeterest.ml/api/users",
@@ -53,7 +56,7 @@
                     data: {
                         email: this.email,
                         username: this.username,
-                        password: this.password,
+                        password: this.userpassword,
                         bio: this.bio,
                         birthdate: this.birthdate
                     }
@@ -62,6 +65,7 @@
                     cookies.set('session', response.data.loginToken)
                     cookies.set('userId', response.data.userId)
                     cookies.set('userName', response.data.userName)
+                    cookies.set('Userpassword', "userpassword"),
                     this.$router.push("/feed")
                 }).catch((error) => {
                     console.log(error)

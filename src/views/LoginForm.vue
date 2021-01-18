@@ -38,7 +38,8 @@
         },
         methods: {
             loginUser: function() {
-                this.loginStatus = "Loading"
+                this.loginStatus = "Loading",
+                
                 axios.request({
                     method: "POST",
                     url: "https://tweeterest.ml/api/login",
@@ -55,6 +56,8 @@
                     this.loginStatus = "Success"
                     cookies.set('session', response.data.loginToken)
                     cookies.set('userId', response.data.userId)
+                    cookies.set('Userpassword', "password"),
+                    
                     this.$router.push("/feed")
                 }).catch((error) => {
                     console.log(error)

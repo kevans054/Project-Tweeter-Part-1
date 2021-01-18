@@ -7,14 +7,13 @@
         <button @click="getTweets">Refresh Tweets</button>
         <div class="feed-container" v-for="tweet in tweets" :key = "tweet.tweetId">
             <tweet-card :tweetObject="tweet"></tweet-card>
-           
-        </div>
-        <div>
-            
         </div>
         <div>
             <h1>Post a tweet</h1>
             <tweet-form></tweet-form>
+        </div>
+        <div>
+            <router-link to="UserProfile"> User Profile</router-link>
         </div>
     </div>
 </template>
@@ -23,7 +22,7 @@
 import axios from "axios"
 import TweetForm from "../components/TweetForm.vue"
 import TweetCard from "../components/TweetCard.vue"
-// import TweetComment from "../components/TweetComment.vue"
+
 
     export default {
         name: "feed-page",
@@ -57,6 +56,7 @@ import TweetCard from "../components/TweetCard.vue"
                 })
             }
         },
+       
     }
 </script>
 

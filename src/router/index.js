@@ -3,11 +3,12 @@ import VueRouter from 'vue-router'
 import LoginForm from '../views/LoginForm.vue'
 import SignupForm from '../views/SignupForm.vue'
 import Feed from '../views/Feed.vue'
+import UserProfile from '../components/UserProfile.vue'
+
 
 Vue.use(VueRouter)
 
 const routes = [
-
   {
     path: '/',
     name: "LoginForm",
@@ -23,6 +24,11 @@ const routes = [
     name: "Feed",
     component: Feed
   },
+  {
+    path: '/userprofile',
+    name: "UserProfile",
+    component: UserProfile
+  }
 ]
 const router = new VueRouter({
   routes
