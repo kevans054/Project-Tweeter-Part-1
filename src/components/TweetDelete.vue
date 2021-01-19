@@ -1,6 +1,6 @@
 <template>
     <div>
-        <button @click="deleteTweet()">Delete Tweet</button>
+        <button class="btn btn-light" type="button" @click="deleteTweet()">Delete Tweet</button>
     </div>
 </template>
 

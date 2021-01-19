@@ -1,10 +1,11 @@
 <template>
-    <div class="view-comments">
-        <button @click="showComments()">View Comments</button>
-            <div v-for="comment in comments" :key="comment.commentId">
-
-                <p> {{ comment.content }}</p>
-            </div> 
+    <div class="row">
+        <div class="col">
+            <button @click="showComments()">View Comments</button>
+                <div v-for="comment in comments" :key="comment.commentId">
+                    <p> {{ comment.content }}</p>
+                </div> 
+        </div>
     </div>
 </template>
 

@@ -1,12 +1,15 @@
 <template>
-    <div class="create-comment">
-        <h3>Add Comments</h3>
-        <div>
-             <div>
-            <textarea v-model="tweetComment"></textarea><br>
-            <button @click="postComment()">Submit</button>
+    <div>
+        <div class="row row cols-12">
+            <div class="col-12">
+                <h3>Add Comments</h3>
+            </div>
         </div>
-        </div>
+        <div class="row">
+            <textarea class="text-primary col-12" v-model="tweetComment"></textarea>
+        </div><br>
+        <button type="submit" class="btn btn-sm btn-primary btn-block Mybutton" @click="postComment()">Submit</button>
+        
     </div>
 </template>
 
@@ -61,5 +64,10 @@ import axios from "axios"
 </script>
 
 <style scoped>
-
+  .Mybutton{
+        align-items: center;
+        background-color: rgb(11, 111, 241);
+        border-color: darkmagenta;
+        border-width: thick;
+    }
 </style>

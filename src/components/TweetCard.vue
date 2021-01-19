@@ -1,18 +1,38 @@
 <template>
     <div>
-        <h1>This is a tweet</h1>
-        <div class="container-fluid">
-            <h3>{{ tweetObject.username }}</h3>
-            <h6>{{ tweetObject.userId }}</h6>
-            
-            <p>{{ tweetObject.tweetId}}
-            <p>{{ content }}</p>
-            <h5>{{ tweetObject.createdAt }}</h5>
-            <tweet-delete v-if="isOwned" :tweetId="tweetObject.tweetId"></tweet-delete><br>
-            <tweet-edit @update-tweet="updateTweet" v-if="isOwned" :tweetId="tweetObject.tweetId"></tweet-edit><br>
-            <view-comments :tweetId="tweetObject.tweetId"></view-comments>
-            <add-comments @add-comment="addComment" :tweetid="tweetObject.tweetId"></add-comments>
-            <view-profiles :userId="tweetObject.userId"></view-profiles>
+        <div class="container">
+            <div class="row row cols-3 alert alert-primary">
+                <div class="col ">Username:{{ tweetObject.username }}</div>
+                <div class="col">UserId: {{ tweetObject.userId }}</div>
+                <div class="col">TweetId: {{ tweetObject.tweetId}}</div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <h2>{{ content }}</h2>
+                    <p>{{ tweetObject.createdAt }}</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="row row cols-2">
+                    <tweet-delete class="col" v-if="isOwned" :tweetId="tweetObject.tweetId"></tweet-delete>
+                    <tweet-edit  class="col" @update-tweet="updateTweet" v-if="isOwned" :tweetId="tweetObject.tweetId"></tweet-edit>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <add-comments @add-comment="addComment" :tweetid="tweetObject.tweetId"></add-comments>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <view-comments :tweetId="tweetObject.tweetId"></view-comments>
+                </div>
+            </div>
+            <div class="row">
+                <div>
+                    <view-profiles :userId="tweetObject.userId"></view-profiles>
+                </div>
+            </div>
         </div>
     </div>
 </template>
@@ -40,16 +60,11 @@ import cookies from 'vue-cookies'
                 type: Object,
                 required: true,
                 },
-                // comments: {
-                // type: Object,
-                // required: true
-                // }
             },
         data() {
             return {
                 isOwned: cookies.get('userId') == this.tweetObject.userId,
-                content: this.tweetObject.content,
-            
+                content: this.tweetObject.content
             }
         },
         methods: {
@@ -60,18 +75,23 @@ import cookies from 'vue-cookies'
             addComment(newComment) {
                 this.comment = newComment;
             },
-        //    viewProfile(userId){
-
-        //    }
         },
     }
 </script>
 
 <style scoped>
-    .container-fluid {
-        display: grid;
-        border: 10px;
-        color: blue;
-        margin: 10px;
+
+    .container {
+        background-color: rgb(20, 131, 223);
+        padding: 30px;
+        border-radius: 3%;
+        border-end-end-radius: 10%;
+        margin: 15px;
+    }
+    .row {
+        /* display:inline-flexbox; */
+        border-color: rgb(8, 37, 167);
+        border-width: 10px;
+        justify-content: center;
     }
 </style>

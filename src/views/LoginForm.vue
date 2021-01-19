@@ -5,9 +5,26 @@
                 <img src="../assets/twitterlogo.png" alt="Twitter logo">
             </div>
             <p>Welcome to Your Tweeter App</p>
-            <p>Login Page</p>
         </div>
+        <div class="container">
+
+      <form class="form-signin">
+        <h2 class="form-signin-heading">Please sign in</h2>
+        <!-- <label for="inputEmail" class="sr-only">Email address</label> -->
+        <input type="email" id="inputEmail" class="form-control" v-model="email" placeholder="Email address" required="" autofocus=""><br>
+        <!-- <label for="inputPassword" class="sr-only">Password</label> -->
+        <input type="password" id="inputPassword" class="form-control" v-model="password" placeholder="Password" required="">
+        
         <div>
+            <button @click="loginUser" class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+        </div><br>
+        <div>
+            <button @click="signup" class="btn btn-lg btn-primary btn-block">I don't have an account yet</button>
+        </div>
+      </form>
+
+    </div>
+        <!-- <div>
             <h1>Email: </h1><input type="text" id="email-input" v-model="email">
         </div>
         <div>
@@ -18,7 +35,7 @@
             <h3 id="login-status">{{loginStatus}}</h3>
             <button @click="signup">I don't have an account yet</button>
              
-        </div>
+        </div> -->
     </div>
 </template>
 

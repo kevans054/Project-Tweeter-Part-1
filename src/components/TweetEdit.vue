@@ -1,9 +1,9 @@
 <template>
     <div>
-        <button @click="show = !show">Edit Tweet</button>
+        <button class="btn btn-light" type="button" @click="show = !show">Edit Tweet</button>
         <div v-if="show">
             <textarea v-model="tweetContent"></textarea>
-            <button @click="editTweet()">Submit</button>
+            <button class="btn btn-primary" type="button" @click="editTweet()">Submit</button>
         </div>
     </div>
 </template>

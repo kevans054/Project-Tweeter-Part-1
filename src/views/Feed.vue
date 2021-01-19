@@ -3,17 +3,17 @@
         <div id="login-logo">
         <img src="../assets/twitterlogo.png" alt="Twitter logo">
     </div>
-        <h6>My Tweeter Feed</h6>
+        <h1>My Tweeter Feed</h1>
         <button @click="getTweets">Refresh Tweets</button>
-        <div class="feed-container" v-for="tweet in tweets" :key = "tweet.tweetId">
+        <div v-for="tweet in tweets" :key = "tweet.tweetId">
             <tweet-card :tweetObject="tweet"></tweet-card>
-        </div>
+        </div><br>
         <div>
             <h1>Post a tweet</h1>
             <tweet-form></tweet-form>
         </div>
         <div>
-            <router-link to="UserProfile"> User Profile</router-link>
+            <router-link to="UserProfile"> My User Profile</router-link>
         </div>
     </div>
 </template>
@@ -61,8 +61,8 @@ import TweetCard from "../components/TweetCard.vue"
 </script>
 
 <style scoped>
-    .feed-container{
+    /* .feed-container{
         display: grid;
 
-    }
+    } */
 </style>
