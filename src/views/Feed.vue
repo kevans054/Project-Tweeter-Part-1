@@ -8,7 +8,7 @@
         <div class="container border border-dark rounded">
             <div class="row">
             <div class="col">
-                <button class="btn btn-outline-dark btn-sm" @click="show = !show">View Your Profile Here</button>
+                <button class="btn btn-outline-dark btn-sm" @click="show = !show">View Your Profile Here</button><br><br>
                             <div v-if="show">
                                 <view-profile :userId="userId"></view-profile>
                             </div>
@@ -28,8 +28,9 @@
         </div>
         <div class="row">
             <div class="col"><br>
-                <div v-for="tweet in tweets" :key = "tweet.tweetId">
+                <div v-for="tweet in tweets" :key = "tweet.tweetId"><br><br>
                     <tweet-card :tweetObject="tweet"></tweet-card>
+                    <br>
                 </div>
             </div>
         </div>

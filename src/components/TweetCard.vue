@@ -109,6 +109,9 @@ import cookies from 'vue-cookies'
             }
         },
         methods: {
+            reloadPage() {
+                window.location.reload()
+            },
             updateTweet(newContent) {
                 this.content = newContent;
             },

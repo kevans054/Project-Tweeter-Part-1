@@ -1,11 +1,11 @@
 <template>
-    <div class="container">
+    <div class="container border">
         <div class="row">
-            <div class="col">
-                <h4>Delete your account</h4><br>
-                <p>Password required:
-                <input type="password" id="password" v-model="password" class="starndard-input"></p>
-                <button class="btn btn-outline-dark btn-sm" @click="deleteAccount">Confirm Delete</button>
+            <div class="col"><br>
+                <h1>Delete your account</h1><br>
+                <p>Password required:</p>
+                <input type="password" id="password" v-model="password" class="starndard-input"><br><br>
+                <button class="btn btn-danger btn-sm" @click="deleteAccount" placeholder="Password">Confirm Delete</button><br><br>
             </div>
         </div>
     </div>
@@ -35,11 +35,11 @@
                         loginToken: cookies.get('session'),
                         password: this.password,
                     }
-                }).then((response) => {
-                    console.log(response)
+                }).then(() => {
+                    this.$router.push({ name: 'SignupForm' })
                     cookies.delete('session')
-                    cookies.delete('userId')
-                    this.$router.push("../views/SignupForm")
+                    // cookies.delete('userId')
+                    console.log(cookies.get('session'))
                     
 
                 }).catch((error) => {

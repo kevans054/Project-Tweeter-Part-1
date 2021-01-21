@@ -47,12 +47,17 @@ import cookies from 'vue-cookies'
                 }).then((response) => {
                     console.log(response)
                     this.tweetStatus = "Tweeted!"
+                    this.$router.push("/feed")
+                    
                 }).catch((error) => {
                         console.log(error)
                         this.tweetStatus = "Failed to tweet!"
                 })
             }
         },
+            reloadPage() {
+                window.location.reload()
+            },
     }
 </script>
 

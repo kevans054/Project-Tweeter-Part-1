@@ -56,12 +56,12 @@
                     cookies.set('session', response.data.loginToken)
                     cookies.set('userId', response.data.userId)
                     cookies.set('Userpassword', "password"),
-                    
                     this.$router.push("/feed")
                 }).catch((error) => {
                     console.log(error)
                     this.loginStatus = "Error"
                     alert("No account with that email or password found. Please create your account.")
+                    this.$router.push({ name: 'SignupForm' })
                 })
             },
 

@@ -1,44 +1,43 @@
-<template class="container border">
+<template>
     <div>
         <div class="row">
             <div class="col">
-                <h4 class="text-info">Create your account</h4>
+                <h1 class="text-info">Create your account</h1>
             </div>
         </div>
-        <div class="row">
-            <div class="col">
-                <p>Email:
-                <input type="text" id="emailfield" v-model="email" class="starndard-input" placeholder="Email address"></p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col">
-                <p>Username:
-                <input type="text" id="usernamefield" v-model="username"></p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col">
-                <p>Password:
-                <input type="password" id="passwordfield" v-model="userpassword" placeholder="password"> </p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col">
-                <p>Bio:
-                <input type="text" id="biofield" v-model="bio"></p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col">
-                <p>birthdate:
-                <input type="text" id="birthdatefield" v-model="birthdate" placeholder="yyyy-mm-dd"></p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col">
-                <button class="btn btn-outline-dark btn-sm" @click="signupUser">Sign up</button>
-            </div>
+        <div class="container border">
+                <div class="row">
+                    <div class="col"><br><br>
+                        <input type="text" label="1" id="emailfield" v-model="email" class="starndard-input" placeholder="Email address">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col"><br>
+                        <input type="text" id="usernamefield" v-model="username" class="standard-input" placeholder="Username">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col"><br>
+                        <input type="password" id="passwordfield" v-model="userpassword" placeholder="Password">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col"><br>
+                        <input type="text" id="biofield" v-model="bio" class="standard-input" placeholder="Bio">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col"><br>
+                        <input type="text" id="birthdatefield" v-model="birthdate" class="standard-input" placeholder="Birthdate: yyyy-mm-dd">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col"><br>
+                        <button class="btn btn-outline-dark btn-sm" @click="signupUser">Sign up</button>
+                        <br><br>
+                    </div>
+                </div>
+ 
         </div>
     </div>
 </template>
@@ -60,8 +59,6 @@
                 birthdate: "",
                 loginToken: "",
                 userpassword: ""
-
-                
             }
         },
         methods: {
@@ -94,13 +91,11 @@
             }
         },
   
-            
-
     }
 </script>
 
 <style scoped>
-/* .container {
+.container {
         background-color: rgb(20, 131, 223);
-    } */
+    }
 </style>

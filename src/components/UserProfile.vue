@@ -1,5 +1,5 @@
-<template class="container border">
-    <div id="profile">
+<template>
+    <div class="container border">
         <div class="row">
             <div class="col">
                 <h1>User Profile</h1>
@@ -13,10 +13,10 @@
                     <p>Bio: {{user.bio }}</p>
                     <p>birthdate: {{ user.birthdate }}</p>
                     <p> userId: {{user.userId}}</p><br>
-                    <button @click="show = !show">Edit Profile</button>
+                    <button class="btn btn-outline-dark btn-sm" @click="show = !show">Edit Profile</button><br><br>
                         <div v-if="show">
                             <p>Bio: </p> <textarea v-model="bioUpdate"></textarea><br><br>
-                            <button @click="saveUser()">Submit</button>
+                            <button class="btn btn-outline-dark btn-sm" @click="saveUser()" placeholder="user.bio">Save Changes</button><br><br>
                         </div>
                 </div>
             </div>
