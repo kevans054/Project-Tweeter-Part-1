@@ -1,8 +1,20 @@
 <template>
-    <div class="post-tweet">
-        <h4>{{ tweetStatus }}</h4>
-        <textarea v-model="tweetContent"></textarea><br>
-        <button @click="postTweet()">Post</button>
+    <div class="container border">
+        <div class="row">
+            <div class="col">
+                <h4>{{ tweetStatus }}</h4>
+            </div>
+        </div>
+        <div class="row">
+            <!-- <div> -->
+                <textarea id="tweetbox" class="col" v-model="tweetContent"></textarea>
+            <!-- </div> -->
+        </div>
+        <div class="row">
+            <div class="col"><br>
+                <button class="btn btn-outline-light btn-sm" @click="postTweet()">Post</button>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -44,7 +56,8 @@ import cookies from 'vue-cookies'
 </script>
 
 <style scoped>
-    .post-tweet{
-        margin: 10px;
+    .container {
+         background-color: rgb(20, 131, 223);
     }
+
 </style>

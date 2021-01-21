@@ -1,8 +1,10 @@
 <template>
     <div>
-        <!-- add alert to confirm delete before -->
-        <button class="btn btn-outline-light btn-sm" @click="deleteTweet()">Delete Tweet</button>
+        <div>
+            <button class="btn btn-outline-dark btn-sm" @click="deleteComment()">Delete Comment</button>
+        </div>
     </div>
+        
 </template>
 
 <script>
@@ -10,18 +12,12 @@ import axios from "axios"
 import cookies from "vue-cookies"
 
     export default {
-        name: "tweet-delete",
+        name: "delete-comment",
         
-        props: {
-            tweetId: {
-                type: Number,
-                required: true
-            }
-        },
         methods: {
-            deleteTweet: function() {
+            deleteComment: function() {
                 axios.request({
-                    url: "https://tweeterest.ml/api/tweets",
+                    url: "https://tweeterest.ml/api/comments",
                     method: "DELETE",
                     headers: {
                         "Content-Type": "application/json",
@@ -29,7 +25,7 @@ import cookies from "vue-cookies"
                     }, 
                     data: {
                         loginToken: cookies.get("session"),
-                        tweetId: this.tweetId
+                        commentId: cookies.get("commentId")
                     },
                 }).then((response) => {
                     console.log(response)

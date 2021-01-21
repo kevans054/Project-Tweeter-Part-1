@@ -1,15 +1,18 @@
 <template>
-    <div>
-        <div class="row row cols-12">
-            <div class="col-12">
-                <h3>Add Comments</h3>
+    <div class="container border">
+        <div class="row">
+            <div class="col"><br>
+                <h5>Post A Comment</h5>
             </div>
         </div>
+        <div class="row"><br>
+            <textarea class="col" v-model="tweetComment"></textarea>
+        </div>
         <div class="row">
-            <textarea class="text-primary col-12" v-model="tweetComment"></textarea>
-        </div><br>
-        <button type="submit" class="btn btn-sm btn-primary btn-block Mybutton" @click="postComment()">Submit</button>
-        
+            <div class="col"><br>
+                <button type="submit" class="btn btn-outline-light btn-sm" @click="postComment()">Post Comment</button><br><br>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -20,7 +23,6 @@ import axios from "axios"
         name: "add-comments",
 
         data() {
-             
             return {
                 comments: [],
                 tweetComment: "",
@@ -34,7 +36,6 @@ import axios from "axios"
         },
         methods: {
             postComment: function() {
-                
                 axios.request({
                     url: "https://tweeterest.ml/api/comments",
                     method: "POST",
@@ -46,14 +47,11 @@ import axios from "axios"
                         loginToken: cookies.get("session"),
                         tweetId: this.tweetid,
                         content: this.tweetComment
-                        
                     },
                      
                 }).then((response) => {
                     console.log(response)
-                    // this.$emit('update-comment', this.tweetComment)
-                    // this.show = false;
-
+                    window.location.reload()
                 }).catch((error) => {
                     console.log(error)
                 })

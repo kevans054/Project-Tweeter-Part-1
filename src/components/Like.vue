@@ -1,12 +1,12 @@
 <template>
     <div class="row">
         <div class='col'>
-            <button @click="follow" v-if="following == false">Follow this user</button>
-            <button @click="unfollow" v-else-if="following == true">unfollow this user</button>
+            <button @click="likeTweet()" v-if="likes == false">like this tweet</button>
+            <button @click="unlikeTweet()" v-else-if="likes == true">unlike this tweet</button>
         </div>
         <div class="row">
             <div class="col"><br>
-                <h5># of followers: {{followerCount}}</h5>
+                <h5># of likes: {{likesCount}}</h5>
             </div>
         </div>
     </div>
@@ -17,27 +17,27 @@ import axios from 'axios'
 import cookies from 'vue-cookies'
 
     export default {
-        name: "follow-user",
+        name: "like-tweet",
 
         data(){
             return {
-                followers: [],
-                following: false,
-                followerCount: 0,
+                tweetLikes: [],
+                likes: false,
+                likesCount: 0,
                 }
         },
         props: {
-            userId: Number
+            tweetId: Number
         },
 
     mounted(){
-        this.getFollowers();
+        this.getLikes();
     },
 
     methods: {
-        follow(){
+        likeTweet(){
             axios.request({
-                url: "https://tweeterest.ml/api/follows",
+                url: "https://tweeterest.ml/api/tweet-likes",
                 method: "POST",
                 headers: {
                      'Content-Type': "application/json",
@@ -45,44 +45,44 @@ import cookies from 'vue-cookies'
                 },
                 data: {
                     loginToken: cookies.get('session'),
-                    followId: this.userId,
+                    tweetId: this.tweetId,
                 }
                 }).then((response) => {
                     console.log(response);
-                    this.following = true;
-                    this.followerCount++;
+                    this.likes = true;
+                    this.likesCount++;
                 }).catch((error) => {
                     console.log(error);
                 })
         },
-        getFollowers(){
+        getLikes(){
             axios.request({
-                url: "https://tweeterest.ml/api/follows",
+                url: "https://tweeterest.ml/api/tweet-likes",
                 method: "GET",
                 headers: {
                      'Content-Type': "application/json",
                      "X-Api-Key": "p3JJq3WhdMwT98hN9PTaYDE1lr2p0qKOaLfIdjyDxiorc"
                 },
                 params: {
-                    userId: cookies.get('userId'),
+                    tweetId: this.tweetId,
                 }
                 }).then((response) => {
                     console.log(response);
-                    this.followers = response.data;
-                    this.followerCount = this.followers.length;
+                    this.tweetLikes = response.data;
+                    this.likesCount = this.tweetLikes.length;
                         let currentUser = cookies.get('userId');
-                        for (let i = 0; i < this.followers.length; i++){
-                            if(currentUser == this.followers[i].userId){
-                                this.following = true;
+                        for (let i = 0; i < this.tweetLikes.length; i++){
+                            if(currentUser == this.tweetLikes[i].userId){
+                                this.likes = true;
                             }
                         }
                 }).catch((error) => {
                     console.log(error);
                 })
         },
-        unfollow(){
+        unlikeTweet(){
             axios.request({
-                url: "https://tweeterest.ml/api/follows",
+                url: "https://tweeterest.ml/api/tweet-likes",
                 method: "DELETE",
                 headers: {
                     'Content-Type': "application/json",
@@ -90,12 +90,12 @@ import cookies from 'vue-cookies'
                 },
                 data: {
                     loginToken: cookies.get('session'),
-                    followId: this.userId,
+                    tweetId: this.tweetId,
                 }
                 }).then((response) => {
                     console.log(response);
-                    this.following = false;
-                    this.followerCount--;
+                    this.likes = false;
+                    this.likesCount--;
                 }).catch((error) => {
                     console.log(error);
                 })

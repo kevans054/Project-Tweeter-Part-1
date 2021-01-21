@@ -8,15 +8,15 @@
         </div>
         <div class="container">
 
-      <form class="form-signin">
+      <form class="form-signin" @submit.prevent="loginUser">
         <h2 class="form-signin-heading">Please sign in</h2>
         <!-- <label for="inputEmail" class="sr-only">Email address</label> -->
-        <input type="email" id="inputEmail" class="form-control" v-model="email" placeholder="Email address" required="" autofocus=""><br>
+        <input type="email" id="inputEmail" class="form-control" v-model="email" placeholder="Email address"><br>
         <!-- <label for="inputPassword" class="sr-only">Password</label> -->
-        <input type="password" id="inputPassword" class="form-control" v-model="password" placeholder="Password" required="">
+        <input type="password" id="inputPassword" class="form-control" v-model="password" placeholder="Password">
         
         <div>
-            <button @click="loginUser" class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+            <button  class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
         </div><br>
         <div>
             <button @click="signup" class="btn btn-lg btn-primary btn-block">I don't have an account yet</button>

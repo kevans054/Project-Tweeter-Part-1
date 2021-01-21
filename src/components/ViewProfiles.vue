@@ -1,19 +1,21 @@
 <template>
-    <div id="profile">
-        <button @click="show = !show">View User Profile</button>
+    <div class="container border" id="profile">
+        <button class="btn btn-outline-light btn-sm" @click="show = !show">View User Profile</button>
         <div v-if="show">
             <h1>User Profile</h1>
-        
-        
-        <div>
-            <div v-for="user in users" :key="user.userId">
-                <p>Email: {{ user.email }}</p>
-                <p>Username: {{ user.username }}</p>
-                <p>Bio: {{user.bio }}</p>
-                <p>birthdate: {{ user.birthdate }}</p>
-                <p> userId: {{user.userId}}</p><br>
-                
-            </div>
+            <div class="row">
+                <div class="col" v-for="user in users" :key="user.userId">
+                    <p>Email: {{ user.email }}</p>
+                    <p>Username: {{ user.username }}</p>
+                    <p>Bio: {{user.bio }}</p>
+                    <p>birthdate: {{ user.birthdate }}</p>
+                    <p> userId: {{user.userId}}</p><br>
+                    <follow-user :userId="user.userId"></follow-user>
+                    <div v-if="userId == user.userId">
+                        <edit-profile :userId="user.userId" :bio="user.bio"></edit-profile><br>
+                        <delete-profile></delete-profile><br>
+                    </div>
+                </div>
             </div>
         </div>        
         
@@ -23,10 +25,18 @@
 <script>
 import axios from 'axios'
 // import cookies from 'vue-cookies'
+import DeleteProfile from './DeleteProfile.vue'
+import EditProfile from "./EditProfile.vue"
+import FollowUser from "./Follow.vue"
 
     export default {
         name: "view-profiles",
 
+    components: {
+        DeleteProfile,
+        EditProfile,
+        FollowUser
+    },
 
          data() {
             return {
@@ -62,12 +72,7 @@ import axios from 'axios'
                     }).then((response) => {
                         console.log(response)
                         this.users = response.data
-                        
-                        // email: this.email,
-                        // username: "",
-                        // password: "",
-                        // bio: "",
-                        // birthdate: "",
+
                     }).catch((error) => {
                         console.log(error)
                     })
