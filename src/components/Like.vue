@@ -1,12 +1,20 @@
 <template>
-    <div class="row">
-        <div class='col'>
-            <button @click="likeTweet()" v-if="likes == false">like this tweet</button>
-            <button @click="unlikeTweet()" v-else-if="likes == true">unlike this tweet</button>
-        </div>
+    <div>
         <div class="row">
+            <div class="col">
+            </div>
+            <div class="col">
+            </div>
+            <div class="col"><br>
+                <button class="btn btn-outline-light btn-sm" @click="likeTweet()" v-if="likes == false">like this tweet</button>
+                <button class="btn btn-outline-light btn-sm" @click="unlikeTweet()" v-else-if="likes == true">unlike this tweet</button>
+            </div>
             <div class="col"><br>
                 <h5># of likes: {{likesCount}}</h5>
+            </div>
+            <div class="col">
+            </div>
+            <div class="col">
             </div>
         </div>
     </div>

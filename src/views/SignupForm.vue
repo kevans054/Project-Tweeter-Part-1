@@ -1,25 +1,46 @@
-<template>
-<div class="signup">
-    <div id="login-logo">
-        <img src="../assets/twitterlogo.png" alt="Twitter logo">
-    </div>
-    <div class="signupData">
-        <h4>Create your account</h4>
-        <p>Email:
-        <input type="text" id="emailfield" v-model="email" class="starndard-input"></p>
-        <p>Username:
-        <input type="text" id="usernamefield" v-model="username"></p>
-        <p>Password:
-        <input type="password" id="passwordfield" v-model="userpassword" > </p>
-        <p>Bio:
-        <input type="text" id="biofield" v-model="bio"></p>
-        <p>birthdate:
-        <input type="text" id="birthdatefield" v-model="birthdate" placeholder="yyyy-mm-dd"></p>
-    </div>
+<template class="container border">
     <div>
-        <button @click="signupUser" class="button is-info">Sign up</button>
+        <div class="row">
+            <div class="col">
+                <h4 class="text-info">Create your account</h4>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <p>Email:
+                <input type="text" id="emailfield" v-model="email" class="starndard-input" placeholder="Email address"></p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <p>Username:
+                <input type="text" id="usernamefield" v-model="username"></p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <p>Password:
+                <input type="password" id="passwordfield" v-model="userpassword" placeholder="password"> </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <p>Bio:
+                <input type="text" id="biofield" v-model="bio"></p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <p>birthdate:
+                <input type="text" id="birthdatefield" v-model="birthdate" placeholder="yyyy-mm-dd"></p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <button class="btn btn-outline-dark btn-sm" @click="signupUser">Sign up</button>
+            </div>
+        </div>
     </div>
-</div>
 </template>
 
 <script>
@@ -79,5 +100,7 @@
 </script>
 
 <style scoped>
-
+/* .container {
+        background-color: rgb(20, 131, 223);
+    } */
 </style>

@@ -2,23 +2,24 @@
     <div class="container">
         <div class="row">
             <div class="col">
-                <h1>Welome to the Social Network</h1>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col"><br>
-                <router-link class="text-dark" to="UserProfile">Checkout Your Profle Here!</router-link><br><br>
+                <h1 class="text-info">Welome to your Social Network</h1>
             </div>
         </div>
         <div class="container border border-dark rounded">
             <div class="row">
-                <!-- <div class="row"> -->
-                    <div class="col">
+            <div class="col">
+                <button class="btn btn-outline-dark btn-sm" @click="show = !show">View Your Profile Here</button>
+                            <div v-if="show">
+                                <view-profile :userId="userId"></view-profile>
+                            </div>
+            </div>
+        </div>
+            <div class="row">
+                    <div class="col"><br>
                         <h2 class="text-dark">Post a Tweet</h2>
                     </div>
-                <!-- </div> -->
             </div>
-        <!-- </div> -->
+            
         <div class="row">
             <div class="col">
                 <tweet-form></tweet-form>
@@ -37,20 +38,25 @@
 
 <script>
 import axios from "axios"
+import cookies from 'vue-cookies'
 import TweetForm from "../components/TweetForm.vue"
 import TweetCard from "../components/TweetCard.vue"
+import ViewProfile from '../components/UserProfile.vue'
 
 
     export default {
         name: "feed-page",
         data() {
             return {
-                tweets: []
+                tweets: [],
+                userId: cookies.get('userId'),
+                show: false
             }
         },
         components: {
             TweetForm,
             TweetCard,
+            ViewProfile
            
         },
         mounted: function() {
@@ -82,7 +88,6 @@ import TweetCard from "../components/TweetCard.vue"
 
 <style scoped>
    .container {
-        /* background-color: rgb(20, 131, 223); */
         padding: 20px;
         margin-top: auto;
         margin-left: auto;

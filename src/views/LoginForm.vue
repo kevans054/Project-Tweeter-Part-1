@@ -1,41 +1,23 @@
 <template>
     <div id="login">
         <div id="title">
-             <div id="login-logo">
-                <img src="../assets/twitterlogo.png" alt="Twitter logo">
+            <h1 class="text-info">Welcome to Your Tweeter App</h1>
+        </div>
+        <div class="container"><br>
+            <form class="form-signin" @submit.prevent="loginUser">
+            <h2 class="form-signin-heading">Please sign in</h2>
+            <input type="email" id="inputEmail" class="form-control" v-model="email" placeholder="Email address"><br>
+            <input type="password" id="inputPassword" class="form-control" v-model="password" placeholder="Password">
+            <div>
+                <button  class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+                <br><br>
             </div>
-            <p>Welcome to Your Tweeter App</p>
+            <div>
+                <button class="btn btn-outline-light btn-sm" @click="signup">I don't have an account</button>
+                <br><br>
+            </div>
+            </form>
         </div>
-        <div class="container">
-
-      <form class="form-signin" @submit.prevent="loginUser">
-        <h2 class="form-signin-heading">Please sign in</h2>
-        <!-- <label for="inputEmail" class="sr-only">Email address</label> -->
-        <input type="email" id="inputEmail" class="form-control" v-model="email" placeholder="Email address"><br>
-        <!-- <label for="inputPassword" class="sr-only">Password</label> -->
-        <input type="password" id="inputPassword" class="form-control" v-model="password" placeholder="Password">
-        
-        <div>
-            <button  class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-        </div><br>
-        <div>
-            <button @click="signup" class="btn btn-lg btn-primary btn-block">I don't have an account yet</button>
-        </div>
-      </form>
-
-    </div>
-        <!-- <div>
-            <h1>Email: </h1><input type="text" id="email-input" v-model="email">
-        </div>
-        <div>
-            <h1>Password: </h1><input type="password" id="password-input" v-model="password">
-        </div>
-        <div>
-            <button @click="loginUser">Login</button>
-            <h3 id="login-status">{{loginStatus}}</h3>
-            <button @click="signup">I don't have an account yet</button>
-             
-        </div> -->
     </div>
 </template>
 
@@ -91,7 +73,9 @@
     
 </script>
 
-<style lang="sass" scoped>
-
+<style scoped>
+    .container {
+        background-color: rgb(20, 131, 223);
+    }
 </style>
 

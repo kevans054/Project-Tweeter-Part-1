@@ -1,5 +1,5 @@
 <template>
-    <div class="container border">
+    <div>
         <div class="row">
             <div class="col"><br>
                 <h5>Post A Comment</h5>
@@ -9,23 +9,35 @@
             <textarea class="col" v-model="tweetComment"></textarea>
         </div>
         <div class="row">
+                <div class="col">
+                </div>
             <div class="col"><br>
-                <button type="submit" class="btn btn-outline-light btn-sm" @click="postComment()">Post Comment</button><br><br>
+                <button type="submit" class="btn btn-outline-light btn-sm" @click="postComment()">Post Comment</button>
             </div>
+            <div class="col">
+                </div>
         </div>
+        <div class="row">
+                <div class="col"><br>
+                </div>
+            </div>
     </div>
 </template>
 
 <script>
 import cookies from 'vue-cookies'
 import axios from "axios"
+// import ViewComments from './ViewComments.vue'
     export default {
         name: "add-comments",
-
+        components: {
+            // ViewComments
+        },
         data() {
             return {
                 comments: [],
                 tweetComment: "",
+                // show: false,
             }
         },
         props: {

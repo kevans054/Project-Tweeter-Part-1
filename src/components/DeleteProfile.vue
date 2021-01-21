@@ -1,18 +1,14 @@
 <template>
-<div class="container">
-    
-    <div class="row">
-        <div class="col">
-            <h4>Delete your account</h4><br>
-            <p>Password required:
-        <input type="password" id="password" v-model="password" class="starndard-input"></p>
-        <button @click="deleteAccount" class="button is-info">Confirm Delete</button>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h4>Delete your account</h4><br>
+                <p>Password required:
+                <input type="password" id="password" v-model="password" class="starndard-input"></p>
+                <button class="btn btn-outline-dark btn-sm" @click="deleteAccount">Confirm Delete</button>
+            </div>
         </div>
     </div>
-    <div>
-        
-    </div>
-</div>
 </template>
 
 <script>
@@ -28,7 +24,6 @@
         },
         methods: {
             deleteAccount: function() {
-                
                 axios.request({
                     url: "https://tweeterest.ml/api/users",
                     method: "DELETE",
@@ -38,25 +33,25 @@
                     },
                     data: {
                         loginToken: cookies.get('session'),
-                        password: this.userpassword,
+                        password: this.password,
                     }
                 }).then((response) => {
                     console.log(response)
-                    cookies.sdelete('session');
-                    cookies.delete('userId');
-                    this.$router.push("/SignupForm")
+                    cookies.delete('session')
+                    cookies.delete('userId')
+                    this.$router.push("../views/SignupForm")
+                    
 
                 }).catch((error) => {
                     console.log(error)
                 })
             }
         },
-  
-            
-
     }
 </script>
 
 <style scoped>
-
+    .container {
+        background-color: rgb(20, 131, 223);
+    }
 </style>

@@ -2,25 +2,22 @@
     <div>
         <div class="row">
             <div class="col">
-                <button class="btn btn-outline-light btn-sm" @click="showComments(), display()">View Comments</button>
-                <!-- <button @click="hide()">hide Comment</button> -->
-            </div>
-        </div>
-        <div class="row">
-            <div class="col">
-                <div v-for="comment in comments" :key="comment.commentId">
-                    <div class="alert alert-primary rounded-pill">
-                        <p>"{{ comment.content }}" </p>
-                        <p>Posted by: {{ comment.username }}</p>
-                        <p>{{ comment.createdAt }}</p>
-                        <p>{{ comment.commentId }}</p>
-                                              
-                        <div v-if="userId == comment.userId" :commentId="comment.commentId">
-                            <update-comment :commentId="comment.commentId" :comment="comment.content"></update-comment>
-                            <delete-comment></delete-comment>
+                    <div class="row">
+                        <div class="col">
+                            <div v-for="comment in comments" :key="comment.commentId"><br>
+                                <div class="border"><br>
+                                    <p>"{{ comment.content }}" </p>
+                                    <p>Posted by: {{ comment.username }}</p>
+                                    <p>{{ comment.createdAt }}</p>
+                                    <p>{{ comment.commentId }}</p>      
+                                    <div v-if="userId == comment.userId" :commentId="comment.commentId">
+                                        <update-comment :commentId="comment.commentId" :comment="comment.content"></update-comment><br>
+                                        <delete-comment></delete-comment><br>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
             </div>
         </div>
     </div>
@@ -51,16 +48,10 @@ import UpdateComment from './UpdateComment.vue'
                 userId: cookies.get('userId')
             }
          },
-        //  mounted: function() {
-        //     this.showComments();
-        // },
+         mounted: function() {
+            this.showComments();
+        },
         methods: {
-            display: function () {
-                this.show = true
-            },
-            hide: function () {
-                this.show = false
-            },
             showComments: function() {
                 axios.request({
                     url: "https://tweeterest.ml/api/comments",
@@ -76,6 +67,7 @@ import UpdateComment from './UpdateComment.vue'
                 }).then((response) => {
                     console.log(response)
                     this.comments = response.data
+                    this.show = true
   
                     // this.$emit('update-comment', this.tweetComment)
 
