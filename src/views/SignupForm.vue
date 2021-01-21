@@ -2,10 +2,10 @@
     <div>
         <div class="row">
             <div class="col">
-                <h1 class="text-info">Create your account</h1>
+                <h1 class="text-info">Create your Tweeter Account</h1>
             </div>
         </div>
-        <div class="container border">
+        <div class="container border border-dark rounded">
                 <div class="row">
                     <div class="col"><br><br>
                         <input type="text" label="1" id="emailfield" v-model="email" class="starndard-input" placeholder="Email address">
@@ -33,11 +33,16 @@
                 </div>
                 <div class="row">
                     <div class="col"><br>
-                        <button class="btn btn-outline-dark btn-sm" @click="signupUser">Sign up</button>
+                        <button class="btn btn-outline-light btn-sm" @click="signupUser">Sign up</button>
                         <br><br>
                     </div>
                 </div>
- 
+                <div class="row">
+                    <div class="col">
+                        <button class="btn btn-outline-light btn-sm" @click="redirect">I Already have an Account</button><br>
+                        <br>
+                    </div>
+                </div>
         </div>
     </div>
 </template>
@@ -63,7 +68,6 @@
         },
         methods: {
             signupUser: function() {
-                
                 axios.request({
                     method: "POST",
                     url: "https://tweeterest.ml/api/users",
@@ -88,9 +92,12 @@
                 }).catch((error) => {
                     console.log(error)
                 })
+            },
+
+            redirect: function () {
+            this.$router.push({ name: 'LoginForm' })
             }
-        },
-  
+        }
     }
 </script>
 

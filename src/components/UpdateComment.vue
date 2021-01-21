@@ -24,11 +24,9 @@ import cookies from "vue-cookies"
         props: {
             comment: {
                 type: String,
-                // required: true
             },
             commentId: {
                 type: Number,
-                // required: true
             }
         },
         data() {
@@ -56,6 +54,7 @@ import cookies from "vue-cookies"
                     },
                 }).then((response) => {
                     console.log(response)
+                    window.location.reload()
 
                 }).catch((error) => {
                     console.log(error)

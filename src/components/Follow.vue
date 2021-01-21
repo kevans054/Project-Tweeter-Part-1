@@ -1,8 +1,8 @@
 <template>
     <div class="row">
         <div class='col'>
-            <button @click="follow" v-if="following == false">Follow this user</button>
-            <button @click="unfollow" v-else-if="following == true">unfollow this user</button>
+            <button class="btn btn-outline-light btn-sm" @click="follow" v-if="following == false">Follow this user</button>
+            <button class="btn btn-outline-light btn-sm" @click="unfollow" v-else-if="following == true">unfollow this user</button>
         </div>
         <div class="row">
             <div class="col"><br>
@@ -96,6 +96,7 @@ import cookies from 'vue-cookies'
                     console.log(response);
                     this.following = false;
                     this.followerCount--;
+                    window.location.reload()
                 }).catch((error) => {
                     console.log(error);
                 })

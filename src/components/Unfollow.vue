@@ -27,6 +27,8 @@ import cookies from "vue-cookies"
                 console.log(response);
                 this.following = false;
                 this.followerCount--;
+                window.location.reload()
+                
                 }).catch((error) => {
                 console.log(error);
                 })

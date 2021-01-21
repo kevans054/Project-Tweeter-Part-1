@@ -44,7 +44,7 @@ import cookies from 'vue-cookies'
                     console.log(response)
                     this.$emit('update-tweet', this.tweetContent)
                     this.show = false;
-
+                    window.location.reload()
                 }).catch((error) => {
                     console.log(error)
                 })

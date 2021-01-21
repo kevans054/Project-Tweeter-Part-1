@@ -62,15 +62,12 @@ import UpdateComment from './UpdateComment.vue'
                     },
                     params: {
                         tweetId: this.tweetId
-                        
                     },
                 }).then((response) => {
                     console.log(response)
                     this.comments = response.data
                     this.show = true
-  
-                    // this.$emit('update-comment', this.tweetComment)
-
+                    window.location.reload()
                 }).catch((error) => {
                     console.log(error)
                 })

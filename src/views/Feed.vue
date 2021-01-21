@@ -2,13 +2,13 @@
     <div class="container">
         <div class="row">
             <div class="col">
-                <h1 class="text-info">Welome to your Social Network</h1>
+                <h1 class="text-info">Welcome to Tweeter!</h1>
             </div>
         </div>
         <div class="container border border-dark rounded">
             <div class="row">
             <div class="col">
-                <button class="btn btn-outline-dark btn-sm" @click="show = !show">View Your Profile Here</button><br><br>
+                <button class="btn btn-primary btn-sm" @click="show = !show">View Your Profile Here</button><br><br>
                             <div v-if="show">
                                 <view-profile :userId="userId"></view-profile>
                             </div>
@@ -19,7 +19,6 @@
                         <h2 class="text-dark">Post a Tweet</h2>
                     </div>
             </div>
-            
         <div class="row">
             <div class="col">
                 <tweet-form></tweet-form>

@@ -1,19 +1,20 @@
 <template>
     <div id="login">
-        <div id="title">
-            <h1 class="text-info">Welcome to Your Tweeter App</h1>
+        <div id="title"><br>
+            <h1 class="text-info">Welcome to Tweeter!</h1>
+            <br>
         </div>
-        <div class="container"><br>
+        <div class="container border border-dark rounded"><br>
             <form class="form-signin" @submit.prevent="loginUser">
-            <h2 class="form-signin-heading">Please sign in</h2>
+            <h2 class="form-signin-heading">Please sign in</h2><br>
             <input type="email" id="inputEmail" class="form-control" v-model="email" placeholder="Email address"><br>
             <input type="password" id="inputPassword" class="form-control" v-model="password" placeholder="Password">
-            <div>
-                <button  class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+            <div><br>
+                <button  class="btn btn-outline-light btn-sm" type="submit">Sign in</button>
                 <br><br>
             </div>
             <div>
-                <button class="btn btn-outline-light btn-sm" @click="signup">I don't have an account</button>
+                <button class="btn btn-outline-light btn-sm" @click="signup">I don't have a User account</button>
                 <br><br>
             </div>
             </form>

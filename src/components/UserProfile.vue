@@ -1,5 +1,5 @@
 <template>
-    <div class="container border">
+    <div class="container border border-dark rounded">
         <div class="row">
             <div class="col">
                 <h1>User Profile</h1>
@@ -10,13 +10,13 @@
                 <div v-for="user in users" :key="user.userId">
                     <p>Email: {{ user.email }}</p>
                     <p>Username: {{ user.username }}</p>
-                    <p>Bio: {{user.bio }}</p>
+                    <p :userBio="user.bio">Bio: {{user.bio }}</p>
                     <p>birthdate: {{ user.birthdate }}</p>
                     <p> userId: {{user.userId}}</p><br>
                     <button class="btn btn-outline-dark btn-sm" @click="show = !show">Edit Profile</button><br><br>
                         <div v-if="show">
-                            <p>Bio: </p> <textarea v-model="bioUpdate"></textarea><br><br>
-                            <button class="btn btn-outline-dark btn-sm" @click="saveUser()" placeholder="user.bio">Save Changes</button><br><br>
+                            <p>Bio: </p> <textarea v-model="bioUpdate" placeholder="userBio"></textarea><br><br>
+                            <button class="btn btn-outline-dark btn-sm" @click="saveUser()">Save Changes</button><br><br>
                         </div>
                 </div>
             </div>
@@ -45,7 +45,8 @@ import DeleteProfile from './DeleteProfile.vue'
                 loginToken: "",
                 bioUpdate: "",
                 password: "",
-                show: false
+                show: false,
+                userBio: ""
                 }
             },
             mounted: function() {
@@ -84,6 +85,7 @@ import DeleteProfile from './DeleteProfile.vue'
                             bio: this.bioUpdate,
                         }
                     }).then((response) => {
+                        window.location.reload()
                         console.log(response)
                         
                     }).catch((error) => {

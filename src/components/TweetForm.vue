@@ -1,15 +1,12 @@
 <template>
-    <div class="container border">
-        
+    <div class="container border border-dark rounded">
         <div class="row">
             <div class="col">
-                <h4>{{ tweetStatus }}</h4>
+                <h4 class="text-white">Tweet Status: {{ tweetStatus }}</h4>
             </div>
         </div>
         <div class="row">
-            <!-- <div> -->
-                <textarea id="tweetbox" class="col" v-model="tweetContent"></textarea>
-            <!-- </div> -->
+                <textarea id="tweetbox" class="col" v-model="tweetContent" placeholder="Enter your tweet here"></textarea>
         </div>
         <div class="row">
             <div class="col"><br>
@@ -27,7 +24,7 @@ import cookies from 'vue-cookies'
         data() {
             return {
                 tweetContent: "",
-                tweetStatus: "tweet!"
+                tweetStatus: "Post your tweet here!"
             }
         },
         methods: {
@@ -47,7 +44,7 @@ import cookies from 'vue-cookies'
                 }).then((response) => {
                     console.log(response)
                     this.tweetStatus = "Tweeted!"
-                    this.$router.push("/feed")
+                    window.location.reload()
                     
                 }).catch((error) => {
                         console.log(error)

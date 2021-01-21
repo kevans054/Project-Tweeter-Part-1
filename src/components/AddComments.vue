@@ -6,7 +6,7 @@
             </div>
         </div>
         <div class="row"><br>
-            <textarea class="col" v-model="tweetComment"></textarea>
+            <textarea class="col" v-model="tweetComment" placeholder="Enter your comments here"></textarea>
         </div>
         <div class="row">
                 <div class="col">

@@ -59,6 +59,7 @@ import cookies from 'vue-cookies'
                     console.log(response);
                     this.likes = true;
                     this.likesCount++;
+                    window.location.reload()
                 }).catch((error) => {
                     console.log(error);
                 })
@@ -84,6 +85,7 @@ import cookies from 'vue-cookies'
                                 this.likes = true;
                             }
                         }
+
                 }).catch((error) => {
                     console.log(error);
                 })
@@ -104,6 +106,7 @@ import cookies from 'vue-cookies'
                     console.log(response);
                     this.likes = false;
                     this.likesCount--;
+                    window.location.reload()
                 }).catch((error) => {
                     console.log(error);
                 })
