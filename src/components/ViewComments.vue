@@ -67,7 +67,7 @@ import UpdateComment from './UpdateComment.vue'
                     console.log(response)
                     this.comments = response.data
                     this.show = true
-                    window.location.reload()
+                    // window.location.reload()
                 }).catch((error) => {
                     console.log(error)
                 })

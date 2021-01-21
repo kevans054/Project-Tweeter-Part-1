@@ -62,11 +62,12 @@
                                 <view-comments :tweetId="tweetObject.tweetId"></view-comments>
                             </div>
                     </div>
-                    <div class="col"><br><br>
-                </div>
+                    <div class="col">
                 </div>
             </div>
         </div>
+        <br>
+    </div>
         <div class="row">
             <div class="col"><br>
                 <div>
